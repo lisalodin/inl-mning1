@@ -1,13 +1,13 @@
 import express, { json } from "express";
 import cors from "cors";
-// import { todoRouter } from "./routes/TodoRouter.mjs"; 
+import { productRouter } from "./routes/productRouter.mjs";
 import mongoose from "mongoose";
 import { config } from "dotenv";
 
-config(); // Laddar miljövariabler från en .env-fil
+config(); // Laddar variabler från en .env-fil
 
 const mongoUri = process.env.MONGO_URI || ""; // Hämtar MongoDB URI från miljövariabler, eller sätter den till en tom sträng om den inte är definierad
-const PORT = process.env.PORT || 4000; // Hämtar portnummer från miljövariabler, eller sätter den till 4000 om den inte är definierad
+const PORT = process.env.PORT || 3000; // Hämtar portnummer från miljövariabler, eller sätter den till 4000 om den inte är definierad
 
 if (mongoUri === "") { // Om mongoUri är en tom sträng, kasta ett fel
     throw "MONGO_URI does not exist in .env.";
@@ -19,11 +19,11 @@ app.use(cors({origin: "http://localhost:5173"})); // Används för att tillåta 
 app.use(json()); // Används för att parsa JSON i request body
 
 
-// Routes (lägger till senare)
-// app.use("/products", productRouter);
+app.use("/products", productRouter); // Används för att hantera alla routes som börjar med /products med hjälp av productRouter
 
 
-app.listen(PORT, async (error) => {   // Hela funktionen som startar api:t
+// Hela funktionen som startar api:t och ansluter till MongoDB är innesluten i en try-catch block för att hantera eventuella fel som kan uppstå under anslutningen. Om anslutningen lyckas, loggas ett meddelande som indikerar att API:t körs och är anslutet till databasen. Om det uppstår ett fel, loggas ett felmeddelande.
+app.listen(PORT, async (error) => {   
     try {
         if (error) {
             console.error(error);
