@@ -1,11 +1,31 @@
 import { Product } from "../models/Product.mjs";
 import { ProductModel } from "../models/ProductSchema.mjs";
 
-// Hämta alla produkter från databasen för att visa i frontend 
-export const getProducts = async () => {
-    const products = await ProductModel.find();
-    return products;
+// Hämta alla produkter från databasen för att visa i frontend och filtrera/sortera baserat på query params
+export const getProducts = async (q?: string, sort?: string) => {
+    const products = await ProductModel.find();                
+    let filteredList = [...products]; 
+    if (q) { 
+        filteredList = filteredList.filter((p) =>
+            p.name.toLowerCase().startsWith(q.toLowerCase()),);}   
+    if (sort) {
+        if ((sort as string) === "asc") {   
+            filteredList.sort((a, b) => {
+                if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+                if (b.name.toLowerCase() < a.name.toLowerCase()) return 1;
+                return 0;
+             });
+        } else {
+            filteredList.sort((a, b) => {
+                if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+                if (b.name.toLowerCase() < a.name.toLowerCase()) return -1;
+                return 0;
+             });
+        }
+    }
+    return filteredList;
 };
+
 
 // Hämta en produkt från databasen baserat på id för att visa i frontend
 export const getProduct = async (id: string) => {

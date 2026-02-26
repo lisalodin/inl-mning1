@@ -11,13 +11,14 @@ export const productRouter = express.Router();  // Skapar en router för produkt
 // Routern hanterar alla endpoints relaterade till produkter, inklusive CRUD-operationer (Create, Read, Update, Delete)
 
 // GET /products - Hämta alla
-productRouter.get("/", async (req, res) => {
+productRouter.get("/", async (req,res) => {
     try {
-        const products = await getProducts();
-        res.status(200).json(products);
+        const { q, sort } = req.query;
+        const products = await getProducts(q as string, sort as string);  
+        res.status(200).json(products);   
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Server error" });
+        console.error(error);  
+        res.status(500).json({ message: error });
     }
 });
 
