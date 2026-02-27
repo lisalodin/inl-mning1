@@ -4,7 +4,7 @@
 }
 
 body {
-    max-width: 600px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
     background: #f5f5f5;
@@ -14,14 +14,56 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+/* Kolumners layout */
+.container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.products-section {
+    width: 600px; 
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 20px;
+    background: white;
+}
+
+.orders-section {
+    width: 600px;
+    text-align: center;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 20px;
+    background: white;
+}
+
+#order-list {
+    text-align: left;
+}
+
 form {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
-input {
-    flex: 1;
+input[id="name"] {
+    width: 195px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[id="price"] {
+    width: 120px;
+    flex: none;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -29,7 +71,7 @@ input {
 
 button {
     padding: 10px 20px;
-    background: #007bff;
+    background: #02346a;
     color: white;
     border: none;
     border-radius: 4px;
@@ -37,9 +79,14 @@ button {
 }
 
 button:hover {
-    background: #0056b3;
+    background: #025bba;
 }
 
+#load-orders {
+    margin-bottom: 20px;
+}
+
+/* Produkter */
 .product {
     display: flex;
     justify-content: space-between;
@@ -48,13 +95,38 @@ button:hover {
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 3px rgba(0,0,0,0.1);
 }
 
 .product button {
-    background: #dc3545;
+    background: #921e29;
 }
 
 .product button:hover {
-    background: #c82333;
+    background: #ce2939;
+}
+
+/* Ordrar */
+.order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    width: 400px;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.1);
+}
+
+.order button {
+    background: #921e29;
+}
+
+.order button:hover {
+    background: #ce2939;
+}
+
+.order-placeholder {
+    width: 400px;
+    height: 1px;
 }

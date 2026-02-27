@@ -8,17 +8,25 @@
   <body>
     <div id="app">
       <h1>🛒 Webshop</h1>
-      
-      <form id="product-form">
-        <input type="text" id="name" placeholder="Produktnamn" required />
-        <input type="number" id="price" placeholder="Pris" required />
-        <button type="submit">Lägg till</button>
-      </form>
-
-      <div id="product-list"></div>
-      <h2>📦 Ordrar</h2>
-<button id="load-orders">Visa ordrar</button>
-<div id="order-list"></div>
+      <div class="container">
+        <div class="products-section">
+          <h2>Produkter</h2>
+          <form id="product-form">
+          <input type="text" id="name" placeholder="Produktnamn" required />
+          <input type="number" id="price" placeholder="Pris" required />
+          <button type="submit">Lägg till</button>
+          </form>
+          <div id="product-list"></div>
+        </div>
+        
+        <div class="orders-section">
+          <h2>Ordrar</h2>
+          <button id="load-orders">Visa ordrar</button>
+          <div id="order-list">
+            <div class="order-placeholder"></div>
+          </div>
+        </div>
+      </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

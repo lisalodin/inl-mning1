@@ -77,9 +77,7 @@ productRouter.put("/:id", async (req, res) => {
 productRouter.delete("/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        console.log("DELETE request for id:", id);  // ← Finns denna?
         const removed = await removeProduct(id);
-        console.log("Remove result:", removed);      // ← Och denna?
         if (removed) {
             res.status(204).send();
         } else {

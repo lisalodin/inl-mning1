@@ -32,10 +32,12 @@ export const getOrder = async (id: string) => {
 export const createOrder = async (
     customerName: string,
     customerEmail: string,
-    items: { productId: number; productName: string; price: number; quantity: number }[]
-) => {
+    items: {
+        productId: number; productName: string; price: number; quantity: number
+    }[] ) => {
     const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+    // Skapa en ny order med ett unikt ID och den aktuella tiden
     const newOrder = {
         id: Date.now(),
         customerName,
