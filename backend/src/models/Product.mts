@@ -1,3 +1,5 @@
+// Denna klass finns för att skapa nya produkter. En produkt representeras av tre egenskaper: id, name och price
+
 export class Product {
     id: number;
     name: string;
