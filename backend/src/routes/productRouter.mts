@@ -8,7 +8,9 @@ import {
 } from "../controllers/productController.mjs";
 
 export const productRouter = express.Router();  // Skapar en router för produkter
-// Routern hanterar alla endpoints relaterade till produkter, inklusive CRUD-operationer (Create, Read, Update, Delete)
+
+// Routern hanterar alla endpoints relaterade till produkter
+// inklusive CRUD-operationer (Create, Read, Update, Delete)
 
 // GET /products - Hämta alla
 productRouter.get("/", async (req,res) => {

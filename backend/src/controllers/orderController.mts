@@ -19,12 +19,13 @@ export const getOrders = async (q?: string, sort?: string) => {
             }
         });
     }
-    return filteredList;
+    return filteredList.map(order => convertDbOrderToDTO(order));
 };
 
 // Hämtar en order
 export const getOrder = async (id: string) => {
-    return await OrderModel.findOne({ id: +id });
+    const order = await OrderModel.findOne({ id: +id });
+    return order ? convertDbOrderToDTO(order) : null;
 };
 
 // Skapar ny order
