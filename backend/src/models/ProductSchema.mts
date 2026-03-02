@@ -1,6 +1,5 @@
 import { Schema, model } from "mongoose";
 
-// Denna fil definierar hur datan sparas i MongoDB för en "Product"
 
 // Skapar ett Mongoose-schema för en "Product" med tre fält: id, name och price. Alla fält är obligatoriska.
 const productSchema = new Schema({  
